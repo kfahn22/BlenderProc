@@ -3,7 +3,7 @@ import argparse
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument('ikea_path', nargs='?', default="resources/ikea", help="Path to the downloaded IKEA dataset, see the /scripts for the download script")
+parser.add_argument('pix3d_path', nargs='?', default="resources/pix3d", help="Path to the downloaded pix3d dataset, see the /scripts for the download script")
 parser.add_argument('cc_material_path', nargs='?', default="resources/cctextures", help="Path to CCTextures folder, see the /scripts for the download script.")
 parser.add_argument('output_dir', nargs='?', default="examples/advanced/random_room_constructor/output", help="Path to where the final files, will be saved")
 args = parser.parse_args()
@@ -13,8 +13,9 @@ bproc.init()
 # Load materials and objects that can be placed into the room
 materials = bproc.loader.load_ccmaterials(args.cc_material_path, ["Bricks", "Wood", "Carpet", "Tile", "Marble"])
 interior_objects = []
-for i in range(15):
-    interior_objects.extend(bproc.loader.load_ikea(args.ikea_path, ["bed", "chair", "desk", "bookshelf"]))
+# originallly 15
+for i in range(5):
+    interior_objects.extend(bproc.loader.load_pix3d(args.pix3d_path, ["bed", "chair", "desk", "bookshelf"]))
 
 # Construct random room and fill with interior_objects
 objects = bproc.constructor.construct_random_room(used_floor_area=25, interior_objects=interior_objects,

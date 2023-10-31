@@ -31,3 +31,10 @@ docs/source/images/
 docs/source/examples/
 docs/source/*md
 blenderproc_resources/
+.env
+
+examples/advanced/random_room_constructor_orig
+blenderproc/python/loader/IKEALoader_edit.py
+my_assets
+blenderproc/resources/cctexture
+.DS_store
